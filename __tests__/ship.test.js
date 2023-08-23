@@ -30,3 +30,26 @@ test('is not sunk when not damaged enough', () => {
     ship.hit();
     expect(ship.isSunk()).toBe(false);
 });
+
+test('coordinates start empty', () => {
+    const ship = new Ship('Big Ship', 4);
+    expect(ship.coordinates).toStrictEqual([]);
+});
+
+test('coordinates to be set to a new array', () => {
+    const ship = new Ship('Big Ship', 4);
+    ship.coordinates = [3, 4, 5, 6];
+    expect(ship.coordinates).toStrictEqual([3, 4, 5, 6]);
+});
+
+test('if ship is hit by enemy', () => {
+    const ship = new Ship('Big Ship', 4);
+    ship.coordinates = [3, 4, 5, 6];
+    expect(ship.isHit(4)).toBeTruthy();
+});
+
+test('if ship is not hit by enemy', () => {
+    const ship = new Ship('Big Ship', 4);
+    ship.coordinates = [3, 4, 5, 6];
+    expect(ship.isHit(7)).toBeFalsy();
+});
