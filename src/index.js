@@ -1,8 +1,7 @@
 console.log('works');
 
 const sampleTest = function sampleTest() {
-    return 'works';
-}
+  return 'works';
+};
 
-//module.exports = sampleTest;
 export default sampleTest;
