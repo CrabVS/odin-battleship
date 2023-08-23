@@ -4,4 +4,5 @@ const sampleTest = function sampleTest() {
     return 'works';
 }
 
-module.exports = sampleTest;
+//module.exports = sampleTest;
+export default sampleTest;
