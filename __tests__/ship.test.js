@@ -15,7 +15,7 @@ test('can take multiple hits', () => {
 });
 
 test('can be sunk', () => {
-    const ship = new Ship('Big Ship', 4);
+    const ship = new Ship('Big Ship', [1, 2, 3, 4]);
     ship.hit();
     ship.hit();
     ship.hit();
@@ -29,11 +29,6 @@ test('is not sunk when not damaged enough', () => {
     ship.hit();
     ship.hit();
     expect(ship.isSunk()).toBe(false);
-});
-
-test('coordinates start empty', () => {
-    const ship = new Ship('Big Ship', 4);
-    expect(ship.coordinates).toStrictEqual([]);
 });
 
 test('coordinates to be set to a new array', () => {

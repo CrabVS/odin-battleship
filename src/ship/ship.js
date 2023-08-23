@@ -1,11 +1,10 @@
 /* eslint no-underscore-dangle: 0 */
 
 class Ship {
-  constructor(name, length) {
+  constructor(name, coordinates) {
     this.name = name;
-    this.length = length;
     this.damage = 0;
-    this.coordinates = [];
+    this.coordinates = coordinates;
   }
 
   getDamage() {
@@ -17,7 +16,7 @@ class Ship {
   }
 
   isSunk() {
-    return this.damage === this.length;
+    return this.damage === this.coordinates.length;
   }
 
   get coordinates() {
