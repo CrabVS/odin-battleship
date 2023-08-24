@@ -33,12 +33,21 @@ test('gameboard can have multiple ships', () => {
 test('can find a ship', () => {
     const gameboard = createGameboard();
 
-    expect(gameboard.findShip(4)).toBe(0);
-    expect(gameboard.findShip(22)).toBe(1);
+    expect(gameboard.findShipIndex(4)).toBe(0);
+    expect(gameboard.findShipIndex(22)).toBe(1);
 });
 
 test('properly scans if has a ship and returns null if not', () => {
     const gameboard = createGameboard();
 
-    expect(gameboard.findShip(9)).toBe(null);
+    expect(gameboard.findShipIndex(9)).toBe(null);
+});
+
+test('can remove a ship', () => {
+    const gameboard = createGameboard();
+    
+    const ship = gameboard.findShipIndex(22);
+    expect(gameboard.findShipIndex(22)).not.toBe(null);
+    gameboard.deleteShip(ship);
+    expect(gameboard.findShipIndex(22)).toBe(null);
 });

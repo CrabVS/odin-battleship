@@ -31,10 +31,14 @@ class Gameboard {
     });
   }
 
-  findShip(c) {
+  findShipIndex(c) {
     for (let i = 0; i < this.ships.length; i += 1) {
       if (this.ships[i].coordinates.includes(c)) return i;
     } return null;
+  }
+
+  deleteShip(i) {
+    this.ships.splice(i, 1);
   }
 
   // a receiveAttack func to check if ship was hit or not and to update the tile
