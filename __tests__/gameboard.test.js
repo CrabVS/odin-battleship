@@ -63,8 +63,8 @@ test('can make a ship receive damage', () => {
 
 test('other ships do not receive damage', () => {
     const gameboard = createGameboard();
-
     const ships = gameboard.getShips();
+    
     gameboard.receiveAttack(22);
     expect(ships[0].getDamage()).toBe(0);
     expect(ships[1].getDamage()).toBe(1);
@@ -72,10 +72,22 @@ test('other ships do not receive damage', () => {
 
 test('to not receive damage', () => {
     const gameboard = createGameboard();
-
     const ships = gameboard.getShips();
+
     gameboard.receiveAttack(10);
     ships.forEach(ship => {
         expect(ship.getDamage()).toBe(0);
     });
+});
+
+test('attack hit a ship', () => {
+    const gameboard = createGameboard();
+
+    expect(gameboard.receiveAttack(22)).toBeTruthy();
+});
+
+test('attack didnt hit a ship', () => {
+    const gameboard = createGameboard();
+
+    expect(gameboard.receiveAttack(10)).toBeFalsy();
 });
