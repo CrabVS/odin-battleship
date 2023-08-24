@@ -1,26 +1,34 @@
 import Ship from '../ship/ship';
 
-const shipList = [
-  { name: 'carrier', length: 4 },
-  { name: 'carrier2', length: 2 },
-];
+// const currentShip = null;
+
+// const shipList = [
+//   { name: 'carrier', length: 5 },
+//   { name: 'battleship', length: 4 },
+//   { name: 'cruiser', length: 3 },
+//   { name: 'submarine', length: 3 },
+//   { name: 'destroyer', length: 2 },
+// ];
 
 class Gameboard {
   constructor() {
-    this.gridSize = 10; // Functions as either the height or width
     this.ships = [];
-    this.illegalCoords = [];
-    this.currentShip = 0;
+    this.tiles = [];
   }
 
-  addShip(coords) {
-    const ship = new Ship(
-      shipList[this.currentShip].name,
-      shipList[this.currentShip].length,
-      coords,
-    );
+  getShips() {
+    return [...this.ships];
+  }
 
+  createShip(name, coords) {
+    const ship = new Ship(name, coords);
     this.ships.push(ship);
+  }
+
+  displayShip(ship) {
+    ship.coordinates.forEach((c) => {
+      this.tiles[c].classList.add('ship');
+    });
   }
 
   // should be able to place ships at specific coordinates by calling ship factory
