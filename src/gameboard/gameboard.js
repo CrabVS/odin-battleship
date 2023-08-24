@@ -31,7 +31,12 @@ class Gameboard {
     });
   }
 
-  // should be able to place ships at specific coordinates by calling ship factory
+  findShip(c) {
+    for (let i = 0; i < this.ships.length; i += 1) {
+      if (this.ships[i].coordinates.includes(c)) return i;
+    } return null;
+  }
+
   // a receiveAttack func to check if ship was hit or not and to update the tile
   // report if all ships were hit or not
 }
