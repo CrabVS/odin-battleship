@@ -6,3 +6,10 @@ test('is player turn', () => {
     player.swapTurn();
     expect(player.isTurn()).toBeTruthy();
 });
+
+test('is a computer', () => {
+    const player = new Player('P1');
+
+    player.addComputer();
+    expect(player.isComputer()).toBeTruthy();
+});

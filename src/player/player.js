@@ -1,7 +1,10 @@
+import Computer from './computer/computer';
+
 class Player {
   constructor(name) {
     this.name = name;
     this.turn = false;
+    this.computer = false;
   }
 
   swapTurn() {
@@ -10,6 +13,15 @@ class Player {
 
   isTurn() {
     return this.turn;
+  }
+
+  addComputer() {
+    this.computer = true;
+    this.brain = new Computer('Computer');
+  }
+
+  isComputer() {
+    return this.computer;
   }
 }
 
