@@ -41,6 +41,11 @@ class Gameboard {
     this.ships.splice(i, 1);
   }
 
+  receiveAttack(c) {
+    const i = this.findShipIndex(c);
+    if (i) this.ships[i].hit();
+  }
+
   // a receiveAttack func to check if ship was hit or not and to update the tile
   // report if all ships were hit or not
 }

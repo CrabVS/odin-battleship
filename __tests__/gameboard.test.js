@@ -46,8 +46,36 @@ test('properly scans if has a ship and returns null if not', () => {
 test('can remove a ship', () => {
     const gameboard = createGameboard();
     
-    const ship = gameboard.findShipIndex(22);
+    const i = gameboard.findShipIndex(22);
     expect(gameboard.findShipIndex(22)).not.toBe(null);
-    gameboard.deleteShip(ship);
+    gameboard.deleteShip(i);
     expect(gameboard.findShipIndex(22)).toBe(null);
+});
+
+test('can make a ship receive damage', () => {
+    const gameboard = createGameboard();
+
+    const i = gameboard.findShipIndex(22);
+    const ships = gameboard.getShips();
+    gameboard.receiveAttack(22);
+    expect(ships[i].getDamage()).toBe(1);
+});
+
+test('other ships do not receive damage', () => {
+    const gameboard = createGameboard();
+
+    const ships = gameboard.getShips();
+    gameboard.receiveAttack(22);
+    expect(ships[0].getDamage()).toBe(0);
+    expect(ships[1].getDamage()).toBe(1);
+});
+
+test('to not receive damage', () => {
+    const gameboard = createGameboard();
+
+    const ships = gameboard.getShips();
+    gameboard.receiveAttack(10);
+    ships.forEach(ship => {
+        expect(ship.getDamage()).toBe(0);
+    });
 });
